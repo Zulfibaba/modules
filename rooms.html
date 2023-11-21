@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <div class="max-w-[90vw] mx-auto p-4 rounded-[4rem]">
+      <div class="bg-white p-4 px-12 rounded-2xl shadow-md">
+        <div class="mb-4 flex flex-col gap-4">
+          <h1 class="text-2xl">Rooms</h1>
+        </div>
+        <div class="flex gap-8 items-center justify-between mb-4">
+          <div class="flex-1 py-8 items-end p-8 border-2 rounded-2xl">
+            <div class="flex justify-between items-center mb-4">
+              <p class="px-2 text-green-800 bg-green-200 rounded-md opacity-60">
+                2 Deal
+              </p>
+
+              <div class="flex justify-center">
+                <div
+                  x-data="{
+                        open: false,
+                        toggle() {
+                            if (this.open) {
+                                return this.close()
+                            }
+
+                            this.$refs.button.focus()
+
+                            this.open = true
+                        },
+                        close(focusAfter) {
+                            if (! this.open) return
+
+                            this.open = false
+
+                            focusAfter && focusAfter.focus()
+                        }
+                    }"
+                  x-on:keydown.escape.prevent.stop="close($refs.button)"
+                  x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                  x-id="['dropdown-button']"
+                  class="relative"
+                >
+                  <!-- Button -->
+                  <button
+                    x-ref="button"
+                    x-on:click="toggle()"
+                    :aria-expanded="open"
+                    :aria-controls="$id('dropdown-button')"
+                    type="button"
+                    class="flex items-center gap-2 bg-white rounded-md"
+                  >
+                    <!-- Heroicon: chevron-down -->
+                    <svg
+                      width="24"
+                      height="25"
+                      viewBox="0 0 24 25"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M10.5 6.01624C10.5 5.61841 10.658 5.23688 10.9393 4.95557C11.2206 4.67427 11.6022 4.51624 12 4.51624C12.3978 4.51624 12.7794 4.67427 13.0607 4.95557C13.342 5.23688 13.5 5.61841 13.5 6.01624C13.5 6.41406 13.342 6.79559 13.0607 7.0769C12.7794 7.3582 12.3978 7.51624 12 7.51624C11.6022 7.51624 11.2206 7.3582 10.9393 7.0769C10.658 6.79559 10.5 6.41406 10.5 6.01624ZM10.5 12.0162C10.5 11.6184 10.658 11.2369 10.9393 10.9556C11.2206 10.6743 11.6022 10.5162 12 10.5162C12.3978 10.5162 12.7794 10.6743 13.0607 10.9556C13.342 11.2369 13.5 11.6184 13.5 12.0162C13.5 12.4141 13.342 12.7956 13.0607 13.0769C12.7794 13.3582 12.3978 13.5162 12 13.5162C11.6022 13.5162 11.2206 13.3582 10.9393 13.0769C10.658 12.7956 10.5 12.4141 10.5 12.0162ZM10.5 18.0162C10.5 17.6184 10.658 17.2369 10.9393 16.9556C11.2206 16.6743 11.6022 16.5162 12 16.5162C12.3978 16.5162 12.7794 16.6743 13.0607 16.9556C13.342 17.2369 13.5 17.6184 13.5 18.0162C13.5 18.4141 13.342 18.7956 13.0607 19.0769C12.7794 19.3582 12.3978 19.5162 12 19.5162C11.6022 19.5162 11.2206 19.3582 10.9393 19.0769C10.658 18.7956 10.5 18.4141 10.5 18.0162Z"
+                        fill="#5D6679"
+                      />
+                    </svg>
+                  </button>
+
+                  <!-- Panel -->
+                  <div
+                    x-ref="panel"
+                    x-show="open"
+                    x-transition.origin.top.left
+                    x-on:click.outside="close($refs.button)"
+                    :id="$id('dropdown-button')"
+                    style="display: none"
+                    class="absolute left-0 mt-2 w-40 rounded-md bg-white shadow-md"
+                  >
+                    <a
+                      href="#"
+                      class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+                    >
+                      New Task
+                    </a>
+
+                    <a
+                      href="#"
+                      class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+                    >
+                      Edit Task
+                    </a>
+
+                    <a
+                      href="#"
+                      class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+                    >
+                      <span class="text-red-600">Delete Task</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mr-4 flex flex-col gap-2">
+              <h1 class="text-md font-light opacity-75">Single sharing</h1>
+              <h1 class="text-lg">
+                <span class="font-semibold text-3xl">2</span>/30
+              </h1>
+              <h1 class="text-2xl font-semibold text-blue-700">$580/day</h1>
+            </div>
+          </div>
+          <div class="flex-1 py-8 items-end p-8 border-2 rounded-2xl">
+            <div class="flex justify-between items-center mb-4">
+              <p class="px-2 text-green-800 bg-green-200 rounded-md opacity-60">
+                2 Deal
+              </p>
+
+              <div class="flex justify-center">
+                <div
+                  x-data="{
+                        open: false,
+                        toggle() {
+                            if (this.open) {
+                                return this.close()
+                            }
+
+                            this.$refs.button.focus()
+
+                            this.open = true
+                        },
+                        close(focusAfter) {
+                            if (! this.open) return
+
+                            this.open = false
+
+                            focusAfter && focusAfter.focus()
+                        }
+                    }"
+                  x-on:keydown.escape.prevent.stop="close($refs.button)"
+                  x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                  x-id="['dropdown-button']"
+                  class="relative"
+                >
+                  <!-- Button -->
+                  <button
+                    x-ref="button"
+                    x-on:click="toggle()"
+                    :aria-expanded="open"
+                    :aria-controls="$id('dropdown-button')"
+                    type="button"
+                    class="flex items-center gap-2 bg-white rounded-md"
+                  >
+                    <!-- Heroicon: chevron-down -->
+                    <svg
+                      width="24"
+                      height="25"
+                      viewBox="0 0 24 25"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M10.5 6.01624C10.5 5.61841 10.658 5.23688 10.9393 4.95557C11.2206 4.67427 11.6022 4.51624 12 4.51624C12.3978 4.51624 12.7794 4.67427 13.0607 4.95557C13.342 5.23688 13.5 5.61841 13.5 6.01624C13.5 6.41406 13.342 6.79559 13.0607 7.0769C12.7794 7.3582 12.3978 7.51624 12 7.51624C11.6022 7.51624 11.2206 7.3582 10.9393 7.0769C10.658 6.79559 10.5 6.41406 10.5 6.01624ZM10.5 12.0162C10.5 11.6184 10.658 11.2369 10.9393 10.9556C11.2206 10.6743 11.6022 10.5162 12 10.5162C12.3978 10.5162 12.7794 10.6743 13.0607 10.9556C13.342 11.2369 13.5 11.6184 13.5 12.0162C13.5 12.4141 13.342 12.7956 13.0607 13.0769C12.7794 13.3582 12.3978 13.5162 12 13.5162C11.6022 13.5162 11.2206 13.3582 10.9393 13.0769C10.658 12.7956 10.5 12.4141 10.5 12.0162ZM10.5 18.0162C10.5 17.6184 10.658 17.2369 10.9393 16.9556C11.2206 16.6743 11.6022 16.5162 12 16.5162C12.3978 16.5162 12.7794 16.6743 13.0607 16.9556C13.342 17.2369 13.5 17.6184 13.5 18.0162C13.5 18.4141 13.342 18.7956 13.0607 19.0769C12.7794 19.3582 12.3978 19.5162 12 19.5162C11.6022 19.5162 11.2206 19.3582 10.9393 19.0769C10.658 18.7956 10.5 18.4141 10.5 18.0162Z"
+                        fill="#5D6679"
+                      />
+                    </svg>
+                  </button>
+
+                  <!-- Panel -->
+                  <div
+                    x-ref="panel"
+                    x-show="open"
+                    x-transition.origin.top.left
+                    x-on:click.outside="close($refs.button)"
+                    :id="$id('dropdown-button')"
+                    style="display: none"
+                    class="absolute left-0 mt-2 w-40 rounded-md bg-white shadow-md"
+                  >
+                    <a
+                      href="#"
+                      class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+                    >
+                      New Task
+                    </a>
+
+                    <a
+                      href="#"
+                      class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+                    >
+                      Edit Task
+                    </a>
+
+                    <a
+                      href="#"
+                      class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+                    >
+                      <span class="text-red-600">Delete Task</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mr-4 flex flex-col gap-2">
+              <h1 class="text-md font-light opacity-75">Single sharing</h1>
+              <h1 class="text-lg">
+                <span class="font-semibold text-3xl">2</span>/30
+              </h1>
+              <h1 class="text-2xl font-semibold text-blue-700">$580/day</h1>
+            </div>
+          </div>
+          <div class="flex-1 py-8 items-end p-8 border-2 rounded-2xl">
+            <div class="flex justify-between items-center mb-4">
+              <p class="px-2 text-green-800 bg-green-200 rounded-md opacity-60">
+                2 Deal
+              </p>
+
+              <div class="flex justify-center">
+                <div
+                  x-data="{
+                        open: false,
+                        toggle() {
+                            if (this.open) {
+                                return this.close()
+                            }
+
+                            this.$refs.button.focus()
+
+                            this.open = true
+                        },
+                        close(focusAfter) {
+                            if (! this.open) return
+
+                            this.open = false
+
+                            focusAfter && focusAfter.focus()
+                        }
+                    }"
+                  x-on:keydown.escape.prevent.stop="close($refs.button)"
+                  x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                  x-id="['dropdown-button']"
+                  class="relative"
+                >
+                  <!-- Button -->
+                  <button
+                    x-ref="button"
+                    x-on:click="toggle()"
+                    :aria-expanded="open"
+                    :aria-controls="$id('dropdown-button')"
+                    type="button"
+                    class="flex items-center gap-2 bg-white rounded-md"
+                  >
+                    <!-- Heroicon: chevron-down -->
+                    <svg
+                      width="24"
+                      height="25"
+                      viewBox="0 0 24 25"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M10.5 6.01624C10.5 5.61841 10.658 5.23688 10.9393 4.95557C11.2206 4.67427 11.6022 4.51624 12 4.51624C12.3978 4.51624 12.7794 4.67427 13.0607 4.95557C13.342 5.23688 13.5 5.61841 13.5 6.01624C13.5 6.41406 13.342 6.79559 13.0607 7.0769C12.7794 7.3582 12.3978 7.51624 12 7.51624C11.6022 7.51624 11.2206 7.3582 10.9393 7.0769C10.658 6.79559 10.5 6.41406 10.5 6.01624ZM10.5 12.0162C10.5 11.6184 10.658 11.2369 10.9393 10.9556C11.2206 10.6743 11.6022 10.5162 12 10.5162C12.3978 10.5162 12.7794 10.6743 13.0607 10.9556C13.342 11.2369 13.5 11.6184 13.5 12.0162C13.5 12.4141 13.342 12.7956 13.0607 13.0769C12.7794 13.3582 12.3978 13.5162 12 13.5162C11.6022 13.5162 11.2206 13.3582 10.9393 13.0769C10.658 12.7956 10.5 12.4141 10.5 12.0162ZM10.5 18.0162C10.5 17.6184 10.658 17.2369 10.9393 16.9556C11.2206 16.6743 11.6022 16.5162 12 16.5162C12.3978 16.5162 12.7794 16.6743 13.0607 16.9556C13.342 17.2369 13.5 17.6184 13.5 18.0162C13.5 18.4141 13.342 18.7956 13.0607 19.0769C12.7794 19.3582 12.3978 19.5162 12 19.5162C11.6022 19.5162 11.2206 19.3582 10.9393 19.0769C10.658 18.7956 10.5 18.4141 10.5 18.0162Z"
+                        fill="#5D6679"
+                      />
+                    </svg>
+                  </button>
+
+                  <!-- Panel -->
+                  <div
+                    x-ref="panel"
+                    x-show="open"
+                    x-transition.origin.top.left
+                    x-on:click.outside="close($refs.button)"
+                    :id="$id('dropdown-button')"
+                    style="display: none"
+                    class="absolute left-0 mt-2 w-40 rounded-md bg-white shadow-md"
+                  >
+                    <a
+                      href="#"
+                      class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+                    >
+                      New Task
+                    </a>
+
+                    <a
+                      href="#"
+                      class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+                    >
+                      Edit Task
+                    </a>
+
+                    <a
+                      href="#"
+                      class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+                    >
+                      <span class="text-red-600">Delete Task</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mr-4 flex flex-col gap-2">
+              <h1 class="text-md font-light opacity-75">Single sharing</h1>
+              <h1 class="text-lg">
+                <span class="font-semibold text-3xl">2</span>/30
+              </h1>
+              <h1 class="text-2xl font-semibold text-blue-700">$580/day</h1>
+            </div>
+          </div>
+          <div class="flex-1 py-8 items-end p-8 border-2 rounded-2xl">
+            <div class="flex justify-between items-center mb-4">
+              <p class="px-2 text-green-800 bg-green-200 rounded-md opacity-60">
+                2 Deal
+              </p>
+
+              <div class="flex justify-center">
+                <div
+                  x-data="{
+                        open: false,
+                        toggle() {
+                            if (this.open) {
+                                return this.close()
+                            }
+
+                            this.$refs.button.focus()
+
+                            this.open = true
+                        },
+                        close(focusAfter) {
+                            if (! this.open) return
+
+                            this.open = false
+
+                            focusAfter && focusAfter.focus()
+                        }
+                    }"
+                  x-on:keydown.escape.prevent.stop="close($refs.button)"
+                  x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                  x-id="['dropdown-button']"
+                  class="relative"
+                >
+                  <!-- Button -->
+                  <button
+                    x-ref="button"
+                    x-on:click="toggle()"
+                    :aria-expanded="open"
+                    :aria-controls="$id('dropdown-button')"
+                    type="button"
+                    class="flex items-center gap-2 bg-white rounded-md"
+                  >
+                    <!-- Heroicon: chevron-down -->
+                    <svg
+                      width="24"
+                      height="25"
+                      viewBox="0 0 24 25"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M10.5 6.01624C10.5 5.61841 10.658 5.23688 10.9393 4.95557C11.2206 4.67427 11.6022 4.51624 12 4.51624C12.3978 4.51624 12.7794 4.67427 13.0607 4.95557C13.342 5.23688 13.5 5.61841 13.5 6.01624C13.5 6.41406 13.342 6.79559 13.0607 7.0769C12.7794 7.3582 12.3978 7.51624 12 7.51624C11.6022 7.51624 11.2206 7.3582 10.9393 7.0769C10.658 6.79559 10.5 6.41406 10.5 6.01624ZM10.5 12.0162C10.5 11.6184 10.658 11.2369 10.9393 10.9556C11.2206 10.6743 11.6022 10.5162 12 10.5162C12.3978 10.5162 12.7794 10.6743 13.0607 10.9556C13.342 11.2369 13.5 11.6184 13.5 12.0162C13.5 12.4141 13.342 12.7956 13.0607 13.0769C12.7794 13.3582 12.3978 13.5162 12 13.5162C11.6022 13.5162 11.2206 13.3582 10.9393 13.0769C10.658 12.7956 10.5 12.4141 10.5 12.0162ZM10.5 18.0162C10.5 17.6184 10.658 17.2369 10.9393 16.9556C11.2206 16.6743 11.6022 16.5162 12 16.5162C12.3978 16.5162 12.7794 16.6743 13.0607 16.9556C13.342 17.2369 13.5 17.6184 13.5 18.0162C13.5 18.4141 13.342 18.7956 13.0607 19.0769C12.7794 19.3582 12.3978 19.5162 12 19.5162C11.6022 19.5162 11.2206 19.3582 10.9393 19.0769C10.658 18.7956 10.5 18.4141 10.5 18.0162Z"
+                        fill="#5D6679"
+                      />
+                    </svg>
+                  </button>
+
+                  <!-- Panel -->
+                  <div
+                    x-ref="panel"
+                    x-show="open"
+                    x-transition.origin.top.left
+                    x-on:click.outside="close($refs.button)"
+                    :id="$id('dropdown-button')"
+                    style="display: none"
+                    class="absolute left-0 mt-2 w-40 rounded-md bg-white shadow-md"
+                  >
+                    <a
+                      href="#"
+                      class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+                    >
+                      New Task
+                    </a>
+
+                    <a
+                      href="#"
+                      class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+                    >
+                      Edit Task
+                    </a>
+
+                    <a
+                      href="#"
+                      class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+                    >
+                      <span class="text-red-600">Delete Task</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mr-4 flex flex-col gap-2">
+              <h1 class="text-md font-light opacity-75">Single sharing</h1>
+              <h1 class="text-lg">
+                <span class="font-semibold text-3xl">2</span>/30
+              </h1>
+              <h1 class="text-2xl font-semibold text-blue-700">$580/day</h1>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </body>
+</html>

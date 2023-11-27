@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interior</title>
+    <!-- Include Owl Carousel CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+  </head>
+  <style>
+    .owl-prev {
+      color: white !important;
+      font-size: 70px !important;
+      position: absolute;
+      top: 40%;
+      left: 0;
+    }
+    .owl-next {
+      color: white !important;
+      font-size: 70px !important;
+      position: absolute;
+      top: 40%;
+      right: 0;
+    }
+  </style>
+  <body>
+    <div class="h-[100vh]">
+      <div
+        class="flex flex-col justify-center text-center h-[29vh] gap-4 max-w-4xl mx-auto"
+      >
+        <h1 class="text-4xl font-semi-bold">Amenities</h1>
+        <p class="text-lg font-light">
+          Families travelling with kids will find Amboseli national park a
+          safari destination matched to no other, with less tourist traffic,
+          breathtaking open space.
+        </p>
+        <hr class="w-24 mx-auto mt-4 border-b-2 border-stone-400" />
+      </div>
+
+      <div class="max-w-7xl mx-auto flex justify-center items-center">
+        <div class="owl-carousel relative">
+          <!-- Your images go here -->
+            <img src="img2.jpg" alt="Image 1" />
+            <img src="img2.jpg" alt="Image 1" />
+            <img src="img2.jpg" alt="Image 1" />
+            <img src="img2.jpg" alt="Image 1" />
+            <img src="img2.jpg" alt="Image 1" />
+            
+          <!-- Add more images as needed -->
+        </div>
+      </div>
+    </div>
+    <!-- Include jQuery and Owl Carousel JS -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".owl-carousel").owlCarousel({
+          items: 3,
+          loop: true,
+          margin: 5,
+          nav: true,
+          autoplay: true, // Enable autoplay
+          autoplayTimeout: 3000, // Set autoplay interval to 3000 milliseconds (3 seconds)
+          animateOut: "fadeOut", // Use 'fadeOut' for smooth fade out animation
+          animateIn: "fadeIn", // Use 'fadeIn' for smooth fade in animation
+          responsive: {
+            0: {
+              items: 1,
+            },
+            600: {
+              items: 3,
+            },
+          },
+        });
+      });
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

@@ -35,16 +35,85 @@
             <p class="text-xl font-light">Welcome To</p>
             <hr class="w-6">
             <h1 class="text-6xl mb-4">Hotel Dominic Parks</h1>
-            <p class="text-lg font-light">Tofu helvetica leggings tattooed. Skateboard blue bottle green juice, brooklyn cardigan kitsch <br>fap
+            <p class="text-lg font-light">Tofu helvetica leggings tattooed. Skateboard blue bottle green juice, brooklyn
+                cardigan kitsch <br>fap
                 narwhal
                 organic flexitarian.</p>
             <hr class="w-24">
         </div>
-        <div class="absolute bottom-0 h-[15vh] w-full bg-stone-800 bg-opacity-70">
-            Hello world
+
+
+        <!--        filters-->
+        <div class="absolute bottom-0 h-[15vh] w-full bg-stone-800 bg-opacity-70 flex justify-center items-center">
+            <form>
+                <div class="flex gap-4 mx-auto max-w-7xl ">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg fill="currentColor" class="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg"
+                                 fill-rule="evenodd"
+                                 clip-rule="evenodd">
+                                <path d="M1 22h2v-22h18v22h2v2h-22v-2zm7-3v4h3v-4h-3zm5 0v4h3v-4h-3zm-6-5h-2v2h2v-2zm8 0h-2v2h2v-2zm-4 0h-2v2h2v-2zm8 0h-2v2h2v-2zm-12-4h-2v2h2v-2zm8 0h-2v2h2v-2zm-4 0h-2v2h2v-2zm8 0h-2v2h2v-2zm-12-4h-2v2h2v-2zm8 0h-2v2h2v-2zm-4 0h-2v2h2v-2zm8 0h-2v2h2v-2zm-12-4h-2v2h2v-2zm8 0h-2v2h2v-2zm-4 0h-2v2h2v-2zm8 0h-2v2h2v-2z"/>
+                            </svg>
+                        </div>
+                        <input name="end" type="text"
+                               class="border border-gray-300 placeholder-gray-700 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 "
+                               placeholder="Location">
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg fill="currentColor" class="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg"
+                                 fill-rule="evenodd"
+                                 clip-rule="evenodd">
+                                <path d="M1 22h2v-22h18v22h2v2h-22v-2zm7-3v4h3v-4h-3zm5 0v4h3v-4h-3zm-6-5h-2v2h2v-2zm8 0h-2v2h2v-2zm-4 0h-2v2h2v-2zm8 0h-2v2h2v-2zm-12-4h-2v2h2v-2zm8 0h-2v2h2v-2zm-4 0h-2v2h2v-2zm8 0h-2v2h2v-2zm-12-4h-2v2h2v-2zm8 0h-2v2h2v-2zm-4 0h-2v2h2v-2zm8 0h-2v2h2v-2zm-12-4h-2v2h2v-2zm8 0h-2v2h2v-2zm-4 0h-2v2h2v-2zm8 0h-2v2h2v-2zm-12-4h-2v2h2v-2zm8 0h-2v2h2v-2zm-4 0h-2v2h2v-2zm8 0h-2v2h2v-2z"/>
+                            </svg>
+                        </div>
+                        <select name="end"
+                                class="border border-gray-300 placeholder-gray-700 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pr-[6rem] w-full ps-10 p-2.5">
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                        </select>
+                    </div>
+
+                    <div date-rangepicker class="flex items-center">
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-700" aria-hidden="true"
+                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                                </svg>
+                            </div>
+                            <input name="start" type="text"
+                                   class="bg-gray-50 placeholder-gray-700 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+                                   placeholder="Check in">
+                        </div>
+                        <span class="mx-4">to</span>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-700" aria-hidden="true"
+                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                                </svg>
+                            </div>
+                            <input name="end" type="text"
+                                   class="border border-gray-300 placeholder-gray-700 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 "
+                                   placeholder="Check out">
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-12 py-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </form>
+
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/datepicker.min.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>
